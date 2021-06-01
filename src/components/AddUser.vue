@@ -9,10 +9,30 @@
 </template>
 
 <script>
+// import { ref } from 'vue';
+import useAlert from '../hooks/alert';
 import UserAlert from './UserAlert.vue';
-import AlertMixin from '../mixins/alert';
+
 export default {
-  components: { UserAlert },
-  mixins: [AlertMixin],
+  components: {
+    UserAlert,
+  },
+  setup() {
+    const [alertIsVisible, showAlert, hideAlert] = useAlert();
+    // const alertIsVisible = ref(false);
+
+    // function showAlert() {
+    //   alertIsVisible.value = true;
+    // }
+    // function hideAlert() {
+    //   alertIsVisible.value = false;
+    // }
+
+    return {
+      alertIsVisible,
+      showAlert,
+      hideAlert,
+    };
+  },
 };
 </script>
